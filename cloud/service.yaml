@@ -3,8 +3,10 @@ kind: Service
 metadata:
   name: flask-redirect-app-service
 spec:
+  allocateLoadBalancerNodePorts: true
   selector:
     app: flask-redirect-app
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80

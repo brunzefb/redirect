@@ -3,7 +3,7 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/redirect')
+@app.route('/')
 def redirect_route():
     # Retrieve the redirect link from the environment variable
     redirect_link = os.environ.get('REDIRECT_LINK', 'http://example.com')

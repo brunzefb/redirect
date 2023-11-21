@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: flask-redirect-app
-      image: docker.io/friedrichbrunzema/flask-redirect-app
+      image: docker.io/friedrichbrunzema/flask-redirect-app:v4
       ports:
         - containerPort: 80
