@@ -1,18 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  namespace: apps
   name: flask-redirect-app-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: nginx
   rules:
-  - host: brunzema.com
+  - host: redirect.brunzema.com
     http:
       paths:
-      - path: /redirect
-        pathType: Prefix
+      - path: /
+        pathType: ImplementationSpecific
         backend:
           service:
             name: flask-redirect-app-service
             port:
               number: 80
+  tls:
+  - hosts:
+    - redirect.brunzema.com
+    secretName: redirect.brunzema.com-tls

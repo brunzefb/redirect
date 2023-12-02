@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-redirect-app-deployment
+  labels:
+    app: flask-redirect-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-redirect-app
+  template:
+    metadata:
+      labels:
+        app: flask-redirect-app  # Corrected label name
+    spec:
+      containers:
+        - name: flask-redirect-app
+          image: docker.io/friedrichbrunzema/flask-redirect-app:v4
+          ports:
+            - containerPort: 80
